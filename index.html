@@ -4,6 +4,14 @@
 <meta charset="utf-8"/>
 <meta name="color-scheme" content="dark"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#0A0E17"/>
+<meta name="apple-mobile-web-app-title" content="G1 Dashboard"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"/>
+<link rel="manifest" href="manifest.webmanifest"/>
 <title>Weekly Reversal G1 – Live Paper Dashboard</title>
 <style>
 
@@ -74,6 +82,9 @@ tfoot td { border-bottom: 0; border-top: 1px solid #2A3548; font-weight: 650; ba
 .picks-card { margin-bottom: 10px; }
 .picks-card > h3 { margin: 0 0 8px; font-size: 13px; font-weight: 650; text-transform: none; letter-spacing: 0; color: var(--tx); }
 .table-scroll { overflow: visible; }
+.live-stamp { color: var(--live); font-size: 12px; margin-top: 4px; font-weight: 600; }
+.live-stamp .unofficial { color: #8A93A6; font-weight: 500; }
+.badge.livequote { background: #102422; color: #5EE0D0; }
 .svg-mobile { display: none; }
 .swipe-hint { display: none; }
 
@@ -125,7 +136,8 @@ tfoot td { border-bottom: 0; border-top: 1px solid #2A3548; font-weight: 650; ba
     <div>
       <h1>G1 Dashboard</h1>
       <div class="sub">Paper journal · America/Chicago · Sunday, Nov 15, 2026 · first fills Mon 11/16</div>
-      <div class="updated">Last updated Sunday, Nov 15, 2026, 12:35 PM CT</div>
+      <div class="updated">Last updated Sunday, Nov 15, 2026, 1:09 PM CT</div>
+      
     </div>
     <div class="pills">
       <span class="pill paper">PAPER ONLY</span>
