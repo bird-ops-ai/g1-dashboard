@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="color-scheme" content="dark"/>
-<meta name="viewport" content="width=1400"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Weekly Reversal G1 – Live Paper Dashboard</title>
 <style>
 
@@ -73,6 +73,47 @@ tfoot td { border-bottom: 0; border-top: 1px solid #2A3548; font-weight: 650; ba
 .foot { color: var(--mu); font-size: 11px; line-height: 1.5; margin-top: 16px; }
 .picks-card { margin-bottom: 10px; }
 .picks-card > h3 { margin: 0 0 8px; font-size: 13px; font-weight: 650; text-transform: none; letter-spacing: 0; color: var(--tx); }
+.table-scroll { overflow: visible; }
+.svg-mobile { display: none; }
+.swipe-hint { display: none; }
+
+/* Mobile-only. Desktop (>=1200px, and anything above 760px) keeps the original layout. */
+@media (max-width: 760px) {
+  body { min-width: 0; }
+  html, body { overflow-x: hidden; max-width: 100%; }
+  .page { width: 100%; max-width: 100%; }
+  .banner { padding: 8px 14px; font-size: 11px; line-height: 1.45; }
+  .wrap { padding: 16px 14px 24px; }
+  h1 { font-size: 22px; }
+  .sub, .updated { font-size: 12px; }
+  .head { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .pills { flex-wrap: wrap; }
+  .kpis.live { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .kpis.live .card { padding: 12px; }
+  .kpis.live .card .v { font-size: 18px; }
+  .kpis.live .card:last-child { grid-column: span 2; }
+  .svg-desktop { display: none; }
+  .svg-mobile { display: block; }
+  .svg-mobile svg { display: block; width: 100%; height: auto; max-width: 100%; }
+  .swipe-hint { display: block; font-size: 11px; color: var(--mu); margin: 0 0 8px; }
+  .card h3 { font-size: 11px; }
+  .card .s { font-size: 12px; }
+  .g1bar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .g1meta { text-align: left !important; }
+  .chart { padding: 10px 8px 12px; overflow: hidden; }
+  .chart h3 { margin-left: 4px; }
+  .chart .note { margin-left: 4px; margin-right: 4px; font-size: 11px; }
+  .chart svg { display: block; width: 100%; height: auto; max-width: 100%; }
+  .heat-wrap { width: 100%; overflow: hidden; }
+  .heat-wrap svg { display: block; width: 100%; height: auto; max-width: 100%; }
+  .bottom { grid-template-columns: 1fr; }
+  .empty-panel { min-height: 160px; padding: 20px 14px; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+  .picks-card .table-scroll table { min-width: 720px; }
+  .tradecard table { font-size: 13px; }
+  .tradecard th, .tradecard td { padding: 8px 8px; font-size: 13px; }
+  .foot { font-size: 12px; line-height: 1.55; }
+}
 
 </style>
 </head>
@@ -84,7 +125,7 @@ tfoot td { border-bottom: 0; border-top: 1px solid #2A3548; font-weight: 650; ba
     <div>
       <h1>G1 Weekly Reversal</h1>
       <div class="sub">Paper journal · America/Chicago · Sunday, Nov 15, 2026 · first fills Mon 11/16</div>
-      <div class="updated">Last updated Sunday, Nov 15, 2026, 11:58 AM CT</div>
+      <div class="updated">Last updated Sunday, Nov 15, 2026, 12:31 PM CT</div>
     </div>
     <div class="pills">
       <span class="pill paper">PAPER ONLY</span>
@@ -106,13 +147,13 @@ tfoot td { border-bottom: 0; border-top: 1px solid #2A3548; font-weight: 650; ba
         <div class="s">SPY adjusted close on Nov 13: 754.37 vs 200-session average 729.32 (+3.44%). The week uses the plain rule. No sell targets.</div>
       </div>
     </div>
-    <div style="text-align:right;color:#8A93A6;font-size:12px;line-height:1.45">Journal run ~9:00 AM CT<br>Fill = official 8:30 AM CT open</div>
+    <div class="g1meta" style="text-align:right;color:#8A93A6;font-size:12px;line-height:1.45">Journal run ~9:00 AM CT<br>Fill = official 8:30 AM CT open</div>
   </div>
 
   <div class="chart">
     <h3>Equity · $1,000 start on 11/16</h3>
     <p class="note"><span class="legend-on"></span>Tan bands will mark live weeks when G1 take-profit is ON (SPY below its 200-session average at the prior Friday close). G1 is OFF this week, so there is no band yet. The axis runs through the first 13 live weeks. G1, SPY, and QQQ all start at $1,000 and overlap until the first Friday mark on 11/20. SPY and QQQ are dividend-adjusted buy-and-hold from the same start, with no trading costs. Live book only — no backtest path.</p>
-    <svg xmlns="http://www.w3.org/2000/svg" width="1320" height="320" viewBox="0 0 1320 320">
+    <div class="svg-desktop"><svg xmlns="http://www.w3.org/2000/svg" width="1320" height="320" viewBox="0 0 1320 320">
 <line x1="58" y1="276.00" x2="1302" y2="276.00" stroke="#1e2636" stroke-width="1"/>
 <text x="50" y="280.00" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">$800</text>
 <line x1="58" y1="226.80" x2="1302" y2="226.80" stroke="#1e2636" stroke-width="1"/>
@@ -144,12 +185,45 @@ tfoot td { border-bottom: 0; border-top: 1px solid #2A3548; font-weight: 650; ba
 <text x="234" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">QQQ buy-and-hold</text>
 <rect x="364" y="8" width="14" height="3.5" rx="1" fill="#F3F6FB"/>
 <text x="384" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">G1 paper book</text>
-</svg>
+</svg></div>
+    <div class="svg-mobile"><svg xmlns="http://www.w3.org/2000/svg" width="346" height="240" viewBox="0 0 346 240">
+<line x1="50" y1="204.00" x2="334" y2="204.00" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="208.00" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">$800</text>
+<line x1="50" y1="169.20" x2="334" y2="169.20" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="173.20" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">$900</text>
+<line x1="50" y1="134.40" x2="334" y2="134.40" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="138.40" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">$1,000</text>
+<line x1="50" y1="99.60" x2="334" y2="99.60" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="103.60" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">$1,100</text>
+<line x1="50" y1="64.80" x2="334" y2="64.80" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="68.80" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">$1,200</text>
+<line x1="50" y1="30.00" x2="334" y2="30.00" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="34.00" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">$1,300</text>
+<line x1="50.00" y1="204" x2="50.00" y2="208" stroke="#2A3548" stroke-width="1"/>
+<text x="50.00" y="222" text-anchor="start" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">Nov</text>
+<line x1="108.09" y1="204" x2="108.09" y2="208" stroke="#2A3548" stroke-width="1"/>
+<text x="108.09" y="222" text-anchor="start" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">Dec</text>
+<line x1="221.05" y1="204" x2="221.05" y2="208" stroke="#2A3548" stroke-width="1"/>
+<text x="221.05" y="222" text-anchor="start" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">Jan</text>
+<line x1="311.41" y1="204" x2="311.41" y2="208" stroke="#2A3548" stroke-width="1"/>
+<text x="311.41" y="222" text-anchor="start" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">Feb</text>
+<line x1="50" y1="204" x2="334" y2="204" stroke="#2A3548" stroke-width="1"/>
+<line x1="50" y1="30" x2="50" y2="204" stroke="#2A3548" stroke-width="1"/>
+<circle cx="50.00" cy="134.40" r="8" fill="none" stroke="#7AA2FF" stroke-width="1.6"/>
+<circle cx="50.00" cy="134.40" r="6" fill="none" stroke="#C084FC" stroke-width="1.6"/>
+<circle cx="50.00" cy="134.40" r="4.5" fill="#F3F6FB" stroke="#0A0E17" stroke-width="1"/>
+<line x1="56" y1="13" x2="74" y2="13" stroke="#7AA2FF" stroke-width="2.2" stroke-dasharray="5 4"/>
+<text x="76" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">SPY</text>
+<line x1="115" y1="13" x2="133" y2="13" stroke="#C084FC" stroke-width="2.2" stroke-dasharray="5 4"/>
+<text x="135" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">QQQ</text>
+<rect x="174" y="8" width="14" height="3.5" rx="1" fill="#F3F6FB"/>
+<text x="194" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">G1</text>
+</svg></div>
   </div>
   <div class="chart">
     <h3>Drawdown from prior peak</h3>
     <p class="note">No live drawdown yet — the book is still at its $1,000 starting peak. The kill rule is a decline worse than −35% from the live peak. The line will fill in after each Friday mark.</p>
-    <svg xmlns="http://www.w3.org/2000/svg" width="1320" height="200" viewBox="0 0 1320 200">
+    <div class="svg-desktop"><svg xmlns="http://www.w3.org/2000/svg" width="1320" height="200" viewBox="0 0 1320 200">
 <line x1="58" y1="156.00" x2="1302" y2="156.00" stroke="#1e2636" stroke-width="1"/>
 <text x="50" y="160.00" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">−40%</text>
 <line x1="58" y1="126.00" x2="1302" y2="126.00" stroke="#1e2636" stroke-width="1"/>
@@ -181,11 +255,46 @@ tfoot td { border-bottom: 0; border-top: 1px solid #2A3548; font-weight: 650; ba
 <text x="143" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">QQQ</text>
 <rect x="182" y="8" width="14" height="3.5" rx="1" fill="#F3F6FB"/>
 <text x="202" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">G1</text>
-</svg>
+</svg></div>
+    <div class="svg-mobile"><svg xmlns="http://www.w3.org/2000/svg" width="346" height="180" viewBox="0 0 346 180">
+<line x1="50" y1="144.00" x2="334" y2="144.00" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="148.00" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">−40%</text>
+<line x1="50" y1="116.86" x2="334" y2="116.86" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="120.86" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">−30%</text>
+<line x1="50" y1="89.71" x2="334" y2="89.71" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="93.71" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">−20%</text>
+<line x1="50" y1="62.57" x2="334" y2="62.57" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="66.57" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">−10%</text>
+<line x1="50" y1="35.43" x2="334" y2="35.43" stroke="#1e2636" stroke-width="1"/>
+<text x="42" y="39.43" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">0%</text>
+<line x1="50.00" y1="144" x2="50.00" y2="148" stroke="#2A3548" stroke-width="1"/>
+<text x="50.00" y="162" text-anchor="start" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">Nov</text>
+<line x1="108.09" y1="144" x2="108.09" y2="148" stroke="#2A3548" stroke-width="1"/>
+<text x="108.09" y="162" text-anchor="start" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">Dec</text>
+<line x1="221.05" y1="144" x2="221.05" y2="148" stroke="#2A3548" stroke-width="1"/>
+<text x="221.05" y="162" text-anchor="start" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">Jan</text>
+<line x1="311.41" y1="144" x2="311.41" y2="148" stroke="#2A3548" stroke-width="1"/>
+<text x="311.41" y="162" text-anchor="start" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">Feb</text>
+<line x1="50" y1="144" x2="334" y2="144" stroke="#2A3548" stroke-width="1"/>
+<line x1="50" y1="30" x2="50" y2="144" stroke="#2A3548" stroke-width="1"/>
+<line x1="50" y1="130.43" x2="334" y2="130.43" stroke="#FF6B7A" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="332" y="126.43" text-anchor="end" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="10" fill="#FF6B7A">Kill −35%</text>
+<circle cx="50.00" cy="35.43" r="8" fill="none" stroke="#7AA2FF" stroke-width="1.6"/>
+<circle cx="50.00" cy="35.43" r="6" fill="none" stroke="#C084FC" stroke-width="1.6"/>
+<circle cx="50.00" cy="35.43" r="4.5" fill="#F3F6FB" stroke="#0A0E17" stroke-width="1"/>
+<line x1="56" y1="13" x2="74" y2="13" stroke="#7AA2FF" stroke-width="2.2" stroke-dasharray="5 4"/>
+<text x="76" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">SPY</text>
+<line x1="115" y1="13" x2="133" y2="13" stroke="#C084FC" stroke-width="2.2" stroke-dasharray="5 4"/>
+<text x="135" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">QQQ</text>
+<rect x="174" y="8" width="14" height="3.5" rx="1" fill="#F3F6FB"/>
+<text x="194" y="15" font-family="system-ui, "Segoe UI", Geist, "IBM Plex Sans", Inter, sans-serif" font-size="11" fill="#8A93A6">G1</text>
+</svg></div>
   </div>
 
   <div class="card picks-card">
     <h3>This week’s picks · fill Mon 11/16 <span class="tag">PENDING</span></h3>
+    <div class="swipe-hint">Swipe the table sideways to see Return %, P&amp;L, and Status.</div>
+    <div class="table-scroll">
     <table class="tight">
       <thead>
         <tr>
@@ -269,6 +378,7 @@ tfoot td { border-bottom: 0; border-top: 1px solid #2A3548; font-weight: 650; ba
         </tr>
       </tfoot>
     </table>
+    </div>
     <div class="s" style="margin-top:10px">Return % and P&amp;L $ are blank because these names have not been filled yet. They will be filled from the costed official Monday open to the week’s close (first mark Fri 11/20), and the total row will show the book’s weekly return and dollar P&amp;L. Planned shares use Friday’s close as a stand-in; actual shares are set at the official Monday open, $200 per slot, whole shares, cost max(5 bp, $0.01/share). Planned notional $813.58, leftover cash about $186.42 if those stand-in prices hold. Skipped as unaffordable (close &gt; $200): MRNA −12.12% at $223.37; SYK −4.98% at $309.64; ACN −3.84% at $250.49.</div>
   </div>
 
